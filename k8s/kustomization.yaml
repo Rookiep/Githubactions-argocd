@@ -4,9 +4,9 @@ kind: Kustomization
 resources:
 - deployment.yaml
 - service.yaml
-- configmap.yaml
+- configmap.yaml    # ← Add this line!
 
 images:
 - name: nginx
   newName: nginx-app
-  newTag: "19500144092"
+  newTag: "19497703146"
