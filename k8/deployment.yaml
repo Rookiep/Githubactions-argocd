@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-app
+  namespace: default   # or argocd namespace if you use another
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx-app
+  template:
+    metadata:
+      labels:
+        app: nginx-app
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:latest          # ← fixed: real existing image
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: html                 # ← fixed volume name
+          mountPath: /usr/share/nginx/html
+      volumes:
+      - name: html                   # ← fixed volume name
+        configMap:
+          name: nginx-index-html     # ← must match ConfigMap name
