@@ -9,4 +9,4 @@ resources:
 images:
 - name: nginx
   newName: nginx-app
-  newTag: "19501000152"
+  newTag: "19501215323"
