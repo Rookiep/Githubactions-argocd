@@ -19,3 +19,10 @@ spec:
           image: nginx:latest   # GitHub Actions will update this tag
           ports:
             - containerPort: 80
+          volumeMounts:
+        - name: nginx-index
+          mountPath: /usr/share/nginx/html   # ← this overwrites the default page
+      volumes:
+      - name: nginx-index
+        configMap:
+          name: nginx-index-html
